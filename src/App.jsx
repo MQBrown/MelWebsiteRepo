@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import Plans from './pages/Plans'
 import Projects from './pages/Projects'
 import Contact from './pages/Contact'
+import BackButton from "../components/BackButton";
 
 export default function App(){
   const [settings, setSettings] = useState(null)
@@ -25,6 +26,15 @@ export default function App(){
           <Link to="/contact">Contact</Link>
           <a href="/admin/">Admin</a>
         </nav>
+        
+        <main className="container">
+          <div style={{display:"flex", gap:12, alignItems:"center", marginBottom:12}}>
+            <BackButton fallback="/" />
+            <h1 style={{margin:0}}>Floor Plans</h1>
+          </div>
+          ...
+        </main>
+        
       </header>
       <Routes location={location}>
         <Route path="/" element={<Home settings={settings} />} />
