@@ -25,7 +25,7 @@ export default function Home({ settings }){
           <p className="sub">Service Area: {s.serviceArea || 'Atlanta Metro & surrounding areas'}</p>
           <Link className="btn" to="/contact">Send a message</Link>
         </div>
-        <div className="card half">
+        <div className="section">
           <h2>Why us</h2>
           <ul className="sub">
             <li>Hands-on new-build experience (framing → finish)</li>
