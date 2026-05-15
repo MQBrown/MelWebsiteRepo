@@ -1,14 +1,6 @@
 import React, { useState } from 'react'
 import BackButton from "../components/BackButton";
 
-<main className="container">
-  <div style={{display:"flex", gap:12, alignItems:"center", marginBottom:12}}>
-    <BackButton fallback="/" />
-    <h1 style={{margin:0}}>Floor Plans</h1>
-  </div>
-  ...
-</main>
-
 export default function Contact({ settings }){
   const s = settings || {}
   const [form, setForm] = useState({ name:'', email:'', phone:'', message:'' })
@@ -39,6 +31,11 @@ export default function Contact({ settings }){
 
   return (
     <main className="container">
+       <div style={{display:"flex", gap:12, alignItems:"center", marginBottom:12}}>
+          <BackButton fallback="/" />
+          <h1 style={{margin:0}}>Floor Plans</h1>
+        </div>
+      
       <h1>Contact</h1>
       <p className="sub">Phone: <strong>{s.phone || '(###) ###-####'}</strong> • Email: <strong>{s.email || 'info@mqbrownproperty.com'}</strong></p>
 
