@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import BackButton from "../BackButton";
+import BackButton from "./BackButton";
 
 export default function Contact({ settings }){
   const s = settings || {}
