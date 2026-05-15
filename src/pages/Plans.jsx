@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import BackButton from "../BackButton";
+import BackButton from "./BackButton";
 
 function parseFrontmatter(md) {
   const match = md.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/);
