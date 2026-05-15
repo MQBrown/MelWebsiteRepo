@@ -1,0 +1,52 @@
+backend:
+  name: github
+  repo: YOUR_GITHUB_ORG_OR_USER/YOUR_REPO
+  branch: main
+  base_url: https://YOUR-OAUTH-PROXY-DOMAIN
+  auth_endpoint: /api/auth
+media_folder: "public/assets"
+public_folder: "/assets"
+
+collections:
+  - name: "plans"
+    label: "Floor Plans"
+    folder: "content/plans"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Summary", name: "summary", widget: "text" }
+      - { label: "PDF File", name: "file", widget: "file" }
+      - { label: "Beds", name: "beds", widget: "number", value_type: "int" }
+      - { label: "Baths", name: "baths", widget: "number", value_type: "int" }
+      - { label: "Square Feet", name: "sqft", widget: "number", value_type: "int" }
+      - { label: "Status", name: "status", widget: "select", options: ["Concept", "Available", "Sold"] }
+      - { label: "Body", name: "body", widget: "markdown", required: false }
+
+  - name: "projects"
+    label: "Projects"
+    folder: "content/projects"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Location", name: "location", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
+      - { label: "Cover Image", name: "coverImage", widget: "image", required: false }
+      - { label: "Summary", name: "summary", widget: "text" }
+      - { label: "Body", name: "body", widget: "markdown", required: false }
+
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - label: "Business Info"
+        name: "business"
+        file: "content/settings.json"
+        fields:
+          - { label: "Business Name", name: "businessName", widget: "string" }
+          - { label: "Tagline", name: "tagline", widget: "string" }
+          - { label: "License Status", name: "licenseStatus", widget: "string" }
+          - { label: "Phone", name: "phone", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Service Area", name: "serviceArea", widget: "string" }
+          - { label: "CTA", name: "cta", widget: "string" }

@@ -1,0 +1,24 @@
+{
+  "routes": [
+    {
+      "route": "/admin/*",
+      "allowedRoles": [
+        "authenticated"
+      ]
+    }
+  ],
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": [
+      "/admin/*",
+      "/*.png",
+      "/*.jpg",
+      "/*.jpeg",
+      "/*.pdf",
+      "/*.svg",
+      "/*.webp",
+      "/*.css",
+      "/*.js"
+    ]
+  }
+}
