@@ -1,24 +1,23 @@
 import React, { useEffect, useState } from 'react'
 
-function parseFrontmatter(md){
-  const match = md.match(/^---
-([\s\S]*?)
----
-([\s\S]*)$/)
-  if(!match) return { data:{}, body: md }
-  const yaml = match[1]
-  const body = match[2]
-  const data = {}
-  yaml.split('
-').forEach(line=>{
-    const idx = line.indexOf(':')
-    if(idx>0){
-      const k = line.slice(0,idx).trim()
-      const v = line.slice(idx+1).trim()
-      data[k]=v
+function parseFrontmatter(md) {
+  const match = md.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/);
+  if (!match) return { data: {}, body: md };
+
+  const yaml = match[1];
+  const body = match[2];
+  const data = {};
+
+  yaml.split(/\r?\n/).forEach((line) => {
+    const idx = line.indexOf(":");
+    if (idx > 0) {
+      const k = line.slice(0, idx).trim();
+      const v = line.slice(idx + 1).trim();
+      data[k] = v;
     }
-  })
-  return { data, body }
+  });
+
+  return { data, body };
 }
 
 export default function Projects(){
