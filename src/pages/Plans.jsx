@@ -1,14 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import BackButton from "../components/BackButton";
 
-<main className="container">
-  <div style={{display:"flex", gap:12, alignItems:"center", marginBottom:12}}>
-    <BackButton fallback="/" />
-    <h1 style={{margin:0}}>Floor Plans</h1>
-  </div>
-  ...
-</main>
-
 function parseFrontmatter(md) {
   const match = md.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/);
   if (!match) return { data: {}, body: md };
@@ -54,6 +46,11 @@ export default function Plans(){
 
   return (
     <main className="container">
+      <div style={{display:"flex", gap:12, alignItems:"center", marginBottom:12}}>
+        <BackButton fallback="/" />
+        <h1 style={{margin:0}}>Floor Plans</h1>
+      </div>
+      
       <h1>Floor Plans</h1>
       <p className="sub">Browse available floor plans. PDFs open in a viewer.</p>
 
