@@ -5,6 +5,7 @@ import Plans from './pages/Plans'
 import Projects from './pages/Projects'
 import Contact from './pages/Contact'
 import BackButton from "./pages/BackButton";
+import "./styles.css";
 
 export default function App(){
   const [settings, setSettings] = useState(null)
