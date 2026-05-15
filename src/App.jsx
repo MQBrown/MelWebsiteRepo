@@ -32,7 +32,6 @@ export default function App(){
             <BackButton fallback="/" />
             <h1 style={{margin:0}}>Floor Plans</h1>
           </div>
-          ...
         </main>
         
       </header>
