@@ -6,9 +6,9 @@ export default function Home({ settings }){
   return (
     <main className="container">
       <section className="hero section">
-        {/* Removed the badge line completely */}
-      
-        <h1 className="h1">We Build Custom, Single Family &amp; Town Houses</h1>
+        <h1 className="h1">
+          We Build Custom, Single Family &amp; Town Houses
+        </h1>
       
         <p className="sub">
           Residential construction &amp; property development in Georgia. Built with precision, inspected for quality,
@@ -19,8 +19,8 @@ export default function Home({ settings }){
           <Link className="btn" to="/plans">View Floor Plans</Link>
           <Link className="btn secondary" to="/contact">Request a Call</Link>
         </div>
-      </section>      
-        {/* RIGHT SIDE (YOUR IMAGE) */}
+      
+        {/* RIGHT SIDE IMAGE */}
         <div className="hero-right">
           <img 
             src="/house.jpg" 
@@ -28,7 +28,7 @@ export default function Home({ settings }){
             className="hero-image"
           />
         </div>
-      </section>  
+      </section>
       
       <section className="section grid">
         <div className="card half">
