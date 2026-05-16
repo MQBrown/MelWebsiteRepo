@@ -1,13 +1,21 @@
 :root{
   --bg:#0b1220;
+  --panel: rgba(20,30,50,0.55);
+  --panel2: rgba(11,18,32,0.70);
+
   --muted:#94a3b8;
   --text:#e5e7eb;
 
   --brand:#f59e0b;
   --brand2:#60a5fa;
+
+  --ring: rgba(96,165,250,0.55);
+  --border: rgba(255,255,255,0.10);
 }
 
 *{ box-sizing:border-box; }
+
+html, body{ height:100%; }
 
 body{
   margin:0;
@@ -42,22 +50,26 @@ body{
 
   backdrop-filter: blur(12px);
   background: rgba(11,18,32,0.75);
-  border-bottom:1px solid rgba(255,255,255,.08);
+  border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
+/* LEFT MENU */
 .links{
   display:flex;
   gap:24px;
 }
 
+/* remove hyperlink look for menu */
 .links a{
   color:#e5e7eb;
   text-decoration:none;
   font-weight:500;
 }
-
-.links a:hover{
-  color:var(--brand);
+.links a:hover{ color:var(--brand); }
+.links a:focus-visible{
+  outline: 3px solid var(--ring);
+  outline-offset: 4px;
+  border-radius:10px;
 }
 
 /* RIGHT SIDE */
@@ -70,24 +82,25 @@ body{
 .brand-right a{
   font-size:24px;
   font-weight:900;
+  text-decoration:none;
 
   background: linear-gradient(90deg, #f59e0b, #60a5fa);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
-
-  text-decoration:none;
 }
 
 .admin-link{
   margin-top:6px;
   font-size:13px;
-  opacity:0.7;
+  opacity:0.75;
   color:var(--muted);
   text-decoration:none;
 }
-
-.admin-link:hover{
-  color:var(--brand2);
+.admin-link:hover{ color:var(--brand2); }
+.admin-link:focus-visible{
+  outline: 3px solid var(--ring);
+  outline-offset: 4px;
+  border-radius:10px;
 }
 
 /* ===== HERO ===== */
@@ -99,15 +112,17 @@ body{
   border-radius:22px;
 
   backdrop-filter: blur(10px);
-  background: rgba(20,30,50,0.55);
+  background: var(--panel);
 
-  box-shadow: 0 30px 70px rgba(0,0,0,.6);
+  box-shadow: 0 30px 70px rgba(0,0,0,0.60);
 }
 
+/* split */
 .hero-split{
   display:grid;
   grid-template-columns:1fr;
   gap:40px;
+  align-items:center;
 }
 
 @media (min-width:900px){
@@ -133,9 +148,10 @@ body{
   width:100%;
   max-width:420px;
   border-radius:16px;
+  object-fit:cover;
 
-  border:1px solid rgba(255,255,255,.08);
-  box-shadow:0 15px 35px rgba(0,0,0,.6);
+  border:1px solid rgba(255,255,255,0.08);
+  box-shadow:0 15px 35px rgba(0,0,0,0.60);
 }
 
 .hero-overlay-text{
@@ -143,21 +159,23 @@ body{
   top:50%;
   left:50%;
   transform:translate(-50%, -50%);
-
   text-align:center;
+
   font-size:28px;
   font-weight:800;
+  line-height:1.25;
 
   max-width:280px;
   color:#fff;
 
-  text-shadow:0 6px 20px rgba(0,0,0,0.9);
+  text-shadow:0 6px 20px rgba(0,0,0,0.90);
 }
 
 /* ===== TEXT ===== */
 .h1{
   font-size:46px;
   font-weight:900;
+  line-height:1.1;
   margin:0;
 
   background: linear-gradient(90deg, #f59e0b, #60a5fa);
@@ -168,43 +186,64 @@ body{
 .sub{
   font-size:18px;
   color:var(--muted);
+  max-width:520px;
   margin:0 0 10px;
 }
 
-/* ===== BUTTONS ===== */
-.hero-actions{
-  display:flex;
-  gap:14px;
-  flex-wrap:wrap;
-}
-
-/* ✅ REMOVED LINK LOOK FROM BUTTONS */
+/* ===== BUTTONS (remove hyperlink look everywhere) ===== */
+/* Links have states (:link/:visited/:hover/:active/:focus). We style them so they never appear like default hyperlinks. [1](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Text_styling/Styling_links)[2](https://www.w3schools.com/Css/css_link.asp) */
 .btn{
-  display:inline-block;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
   padding:10px 16px;
   border-radius:12px;
   font-weight:700;
   border:none;
   cursor:pointer;
 
-  text-decoration:none;     /* ✅ removes underline */
-  color:#111;               /* ✅ prevents blue/purple */
+  text-decoration:none;      /* remove underline */
+  user-select:none;
 
   background: linear-gradient(90deg, #f59e0b, #fbbf24);
+  color:#111;
 }
 
-.btn:hover{
-  opacity:0.9;
+/* Ensure anchors with .btn do not become purple/blue visited */
+.btn:link,
+.btn:visited{
+  color:#111;
+  text-decoration:none;
+}
+
+.btn:hover{ opacity:0.92; }
+.btn:active{ transform: translateY(1px); }
+
+.btn:focus-visible{
+  outline: 3px solid var(--ring);
+  outline-offset: 3px;
 }
 
 .btn.secondary{
+  background: rgba(96,165,250,0.12);
   color:#fff;
-  background: rgba(96,165,250,.12);
-  border:1px solid rgba(96,165,250,.35);
+  border:1px solid rgba(96,165,250,0.35);
+}
+.btn.secondary:link,
+.btn.secondary:visited{
+  color:#fff;
 }
 
 .btn.secondary:hover{
-  background: rgba(96,165,250,.2);
+  background: rgba(96,165,250,0.20);
+}
+
+/* Hero button row */
+.hero-actions{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
 }
 
 /* ===== LOWER SECTIONS ===== */
@@ -214,38 +253,49 @@ body{
 
   border-radius:16px;
   backdrop-filter: blur(8px);
-  background: rgba(11,18,32,0.7);
+  background: var(--panel2);
 }
 
-/* ===== GRID ===== */
+/* ===== GRID / CARDS ===== */
 .grid{
   display:grid;
   grid-template-columns:repeat(12,1fr);
   gap:20px;
 }
 
-/* ===== CARDS ===== */
+/* Default: natural cards (stable) */
 .card{
   grid-column:span 12;
-  background: rgba(18,26,43,0.9);
+  background: rgba(18,26,43,0.90);
   border-radius:16px;
   padding:20px;
-
-  display:flex;
-  flex-direction:column;
-  gap:12px;
+  border:1px solid rgba(255,255,255,0.06);
 }
 
-/* ✅ SIMPLE BUTTON SPACING (NO ALIGNMENT TRICKS) */
+/* nice spacing inside cards */
+.card h2{ margin:0 0 8px; }
+.card ul{ margin: 0; padding-left:18px; }
+.card li{ margin-bottom:8px; color:var(--muted); }
+
+/* clean button spacing in cards */
 .card .btn{
   margin-top:12px;
 }
 
-/* HALF WIDTH */
+/* Optional: “line up buttons” mode — add class `equalize` to the grid container */
+.grid.equalize .card{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  min-height: 280px;      /* gentle consistency, avoids past “messed up” layout */
+}
+.grid.equalize .card .btn{
+  margin-top:auto;        /* push button to bottom */
+  align-self:flex-start;
+}
+
 @media (min-width:900px){
-  .card.half{
-    grid-column:span 6;
-  }
+  .card.half{ grid-column:span 6; }
 }
 
 /* ===== CONTACT PAGE ===== */
@@ -259,5 +309,48 @@ body{
   .contact-layout{
     grid-template-columns:1.2fr 0.8fr;
     gap:32px;
+    align-items:start;
   }
+}
+
+.contact-form{
+  display:grid;
+  gap:12px;
+}
+
+.contact-right{
+  border-left: 1px solid rgba(255,255,255,0.08);
+  padding-left: 18px;
+}
+
+@media (max-width:899px){
+  .contact-right{
+    border-left:none;
+    padding-left:0;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 18px;
+  }
+}
+
+/* Inputs */
+.input, textarea{
+  width:100%;
+  padding:10px 12px;
+  border-radius:12px;
+  border:1px solid rgba(148,163,184,0.25);
+  background:#0b1220;
+  color:var(--text);
+}
+
+label{
+  font-size:13px;
+  color:var(--muted);
+}
+
+/* Footer (if you keep it) */
+.footer{
+  padding:28px 0;
+  color:var(--muted);
+  border-top:1px solid rgba(148,163,184,0.15);
+  margin-top:32px;
 }
