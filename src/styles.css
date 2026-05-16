@@ -60,6 +60,7 @@ body{
   color:var(--brand);
 }
 
+/* RIGHT SIDE */
 .brand-wrapper{
   display:flex;
   flex-direction:column;
@@ -96,10 +97,11 @@ body{
   padding:50px;
 
   border-radius:22px;
+
   backdrop-filter: blur(10px);
   background: rgba(20,30,50,0.55);
 
-  box-shadow: 0 30px 70px rgba(0,0,0,0.60);
+  box-shadow: 0 30px 70px rgba(0,0,0,.6);
 }
 
 .hero-split{
@@ -170,7 +172,7 @@ body{
   font-size:18px;
   color:var(--muted);
   max-width:520px;
-  margin:0 0 8px;
+  margin:0 0 10px;
 }
 
 /* ===== BUTTONS ===== */
@@ -191,7 +193,9 @@ body{
   color:#111;
 }
 
-.btn:hover{ opacity:0.9; }
+.btn:hover{
+  opacity:0.9;
+}
 
 .btn.secondary{
   background: rgba(96,165,250,.12);
@@ -218,85 +222,27 @@ body{
   display:grid;
   grid-template-columns:repeat(12,1fr);
   gap:20px;
+
+  align-items:stretch;   /* ✅ makes cards same height */
 }
 
+/* ===== CARDS ===== */
 .card{
   grid-column:span 12;
   background: rgba(18,26,43,0.9);
   border-radius:16px;
   padding:20px;
-  flex-direction:column;
 
-  display:grid;
-  grid-template-columns:repeat(12,1fr);
-  gap:20px;
-  align-items:stretch;   /* ✅ THIS FIXES HEIGHT MATCHING */
-
-  min-height: 100%;   /* ✅ ensures equal height */
-}
-
-/* ===== CONTACT PAGE ===== */
-.contact-layout{
-  display:grid;
-  grid-template-columns: 1fr;
-  gap:40px;
-}
-
-/* side-by-side on desktop */
-@media(min-width:900px){
-  .contact-layout{
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-/* LEFT SIDE */
-.contact-left{
   display:flex;
   flex-direction:column;
   gap:12px;
+
+  height:100%;   /* ✅ ensures equal height */
 }
 
-/* RIGHT SIDE */
-.contact-right{
-  padding-left:10px;
-}
-
-.contact-right ul{
-  margin:10px 0;
-  padding-left:18px;
-  color:var(--muted);
-}
-
-.contact-layout{
-  backdrop-filter: blur(10px);
-  background: rgba(20,30,50,0.55);
-  border-radius:20px;
-  padding:30px;
-}
-
-.contact-right li{
-  margin-bottom:8px;
-}
-
-/* INPUTS */
-.input{
-  padding:10px 12px;
-  border-radius:12px;
-  border:1px solid rgba(148,163,184,.25);
-  background:#0b1220;
-  color:#fff;
-  width:100%;
-}
-
-
-
-/* ✅ FIXES BUTTON OVERLAP */
+/* ✅ KEY FIX: buttons align perfectly */
 .card .btn{
   margin-top:auto;
   align-self:flex-start;
 }
-@media (min-width:900px){
-  .card.half{
-    grid-column:span 6;
-  }
-}
+
