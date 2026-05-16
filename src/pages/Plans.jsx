@@ -52,10 +52,6 @@ export default function Plans(){
         <h1 style={{margin:0}}>Floor Plans</h1>
       </div>
       <p className="sub">Browse available floor plans. PDFs open in a viewer.</p>
-      
-      <h1>Floor Plans</h1>
-      <p className="sub">Browse available floor plans. PDFs open in a viewer.</p>
-
       <section className="grid">
         <div className="card half">
           <h2>Plans</h2>
