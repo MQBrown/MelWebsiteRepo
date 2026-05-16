@@ -6,28 +6,29 @@ export default function Home({ settings }){
   return (
     <main className="container">
       <section className="hero section hero-split">
-        <h1 className="h1">
-          We Build Townhouse, Single Family &amp; Custom Homes
-        </h1>
       
-        <p className="sub">
-          Residential construction &amp; property development in Georgia. Built with precision, inspected for quality,
-          and delivered with integrity.
-        </p>
+        {/* LEFT SIDE */}
+        <div className="hero-left">
+          <h1 className="h1">
+            We Build Custom, Single Family &amp; Town Houses
+          </h1>
       
-        <div className="hero-actions hero-actions-center">
-          <Link className="btn" to="/plans">View Floor Plans</Link>
-          <Link className="btn secondary" to="/contact">Request a Call</Link>
+          <p className="sub">
+            Residential construction & property development in Georgia.
+            Built with precision, inspected for quality, and delivered with integrity.
+          </p>
+      
+          <div className="hero-actions">
+            <Link className="btn" to="/plans">View Floor Plans</Link>
+            <Link className="btn secondary" to="/contact">Request a Call</Link>
+          </div>
         </div>
       
         {/* RIGHT SIDE IMAGE */}
         <div className="hero-right">
-          <img 
-            src="/house.jpg" 
-            alt="Project Preview"
-            className="hero-image"
-          />
+          <img src="/house.jpg" className="hero-image" />
         </div>
+      
       </section>
       
       <section className="section grid">
