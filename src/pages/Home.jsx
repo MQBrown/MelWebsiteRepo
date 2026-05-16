@@ -6,7 +6,7 @@ export default function Home({ settings }) {
 
   return (
     <main className="container">
-      <section className="hero section hero-split">
+      <section className="hero section hero-split reveal">
 
         {/* LEFT SIDE */}
         <div className="hero-left">
@@ -42,7 +42,7 @@ export default function Home({ settings }) {
       </section>
 
       {/* ===== LOWER SECTION ===== */}
-      <section className="section grid equalize">
+      <section className="section grid equalize reveal">
 
         <div className="card half">
           <h2 style={{ marginTop: 0 }}>Contact</h2>
