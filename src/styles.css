@@ -225,18 +225,18 @@ body{
   background: rgba(18,26,43,0.9);
   border-radius:16px;
   padding:20px;
-
+  gap:12px;   /* adds spacing between text elements */
   display:flex;
   flex-direction:column;
-  gap:12px;
+
+  min-height: 100%;   /* ✅ ensures equal height */
 }
 
 /* ✅ FIXES BUTTON OVERLAP */
 .card .btn{
-  margin-top:10px;
+  margin-top:auto;
   align-self:flex-start;
 }
-
 @media (min-width:900px){
   .card.half{
     grid-column:span 6;
