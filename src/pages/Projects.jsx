@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import BackButton from './BackButton';
+import BackButton from "../components/BackButton";
 
 function parseFrontmatter(md) {
   const match = md.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/);
@@ -41,11 +41,13 @@ export default function Projects(){
 
   return (
     <main className="container">
+          
       <div style={{display:"flex", gap:12, alignItems:"center", marginBottom:12}}>
         <BackButton fallback="/" />
-        <h1 style={{margin:0}}>Floor Plans</h1>
+        <h1 style={{margin:0}}>Projects</h1>
       </div>
-     
+      <p className="sub">Selected projects and build experience.</p>
+
       <h1>Projects</h1>
       <p className="sub">Selected projects and build experience.</p>
       <section className="grid">
