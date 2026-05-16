@@ -247,3 +247,56 @@ body{
   margin-top:12px;
   display:inline-block;
 }
+/* ===== CONTACT PAGE LAYOUT ===== */
+.contact-layout{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:24px;
+}
+
+@media (min-width: 900px){
+  .contact-layout{
+    grid-template-columns: 1.2fr 0.8fr;
+    gap:32px;
+    align-items:start;
+  }
+}
+
+.contact-form{
+  display:grid;
+  gap:12px;
+}
+
+.contact-right{
+  border-left: 1px solid rgba(255,255,255,.08);
+  padding-left: 18px;
+}
+
+@media (max-width: 899px){
+  .contact-right{
+    border-left: none;
+    padding-left: 0;
+    border-top: 1px solid rgba(255,255,255,.08);
+    padding-top: 18px;
+  }
+}
+
+.contact-list{
+  margin: 10px 0 12px;
+  padding-left: 18px;
+}
+
+.contact-list li{
+  margin-bottom: 8px;
+  color: var(--muted);
+}
+
+/* Ensure inputs look consistent */
+.input{
+  width:100%;
+  padding:10px 12px;
+  border-radius:12px;
+  border:1px solid rgba(148,163,184,.25);
+  background:#0b1220;
+  color:var(--text);
+}
