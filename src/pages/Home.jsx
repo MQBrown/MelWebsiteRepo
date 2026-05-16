@@ -5,19 +5,38 @@ export default function Home({ settings }){
   const s = settings || {}
   return (
     <main className="container">
-      <section className="hero section">
-        <span className="badge">{s.licenseStatus || "Georgia Residential Basic Contractor License – Pending"}</span>
-        <h1 className="h1">{s.tagline || "Residential Construction & Property Development – Georgia"}</h1>
-        <p className="sub">
-          Built right. Permitted. Inspected. We focus on quality workmanship, clear communication, and code compliance.
-        </p>
-  
-        <div style={{display:"flex", gap:12, justifyContent:"center", flexWrap:"wrap"}}>
-          <Link className="btn" to="/plans">View Floor Plans</Link>
-          <Link className="btn secondary" to="/contact">{s.cta || "Request a call back"}</Link>
+      <section className="hero section hero-split">
+        {/* LEFT SIDE */}
+        <div className="hero-left">
+          <span className="badge">
+            Georgia Residential Contractor – Pending
+          </span>
+      
+          <h1 className="h1">
+            Built Right. Permitted. Inspected.
+          </h1>
+      
+          <p className="sub">
+            Residential construction & property development in Georgia. 
+            We focus on quality workmanship, clear communication, and code compliance.
+          </p>
+      
+          <div className="hero-actions">
+            <a className="btn" href="/plans">View Floor Plans</a>
+            <a className="btn secondary" href="/contact">Request a call back</a>
+          </div>
         </div>
-      </section>
-  
+      
+        {/* RIGHT SIDE (YOUR IMAGE) */}
+        <div className="hero-right">
+          <img 
+            src="/house.jpg" 
+            alt="Project Preview"
+            className="hero-image"
+          />
+        </div>
+      </section>  
+      
       <section className="section grid">
         <div className="card half">
           <h2 style={{marginTop:0}}>Contact</h2>
