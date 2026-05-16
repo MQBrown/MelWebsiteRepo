@@ -5,9 +5,9 @@ export default function Home({ settings }){
   const s = settings || {}
   return (
     <main className="container">
-      <section className="hero section">
+      <section className="hero section hero-split">
         <h1 className="h1">
-          We Build Custom, Single Family &amp; Town Houses
+          We Build Townhouse, Single Family &amp; Custom Homes
         </h1>
       
         <p className="sub">
