@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 import BackButton from "../components/BackButton";
 
 function parseFrontmatter(md) {
@@ -6,7 +6,6 @@ function parseFrontmatter(md) {
   if (!match) return { data: {}, body: md };
 
   const yaml = match[1];
-  const body = match[2];
   const data = {};
 
   yaml.split(/\r?\n/).forEach((line) => {
@@ -18,50 +17,84 @@ function parseFrontmatter(md) {
     }
   });
 
-  return { data, body };
+  return { data };
 }
 
-export default function Projects(){
-  const [items, setItems] = useState([])
+export default function Projects() {
+  const [items, setItems] = useState([]);
 
-  useEffect(()=>{
-    fetch('/content/projects/index.json')
-      .then(r=>r.json())
-      .then(async (list)=>{
-        const loaded=[]
-        for(const path of list){
-          const md = await fetch(path).then(r=>r.text())
-          const fm = parseFrontmatter(md)
-          loaded.push({ ...fm.data })
+  useEffect(() => {
+    fetch("/content/projects/index.json")
+      .then((r) => r.json())
+      .then(async (list) => {
+        const loaded = [];
+        for (const path of list) {
+          const md = await fetch(path).then((r) => r.text());
+          const fm = parseFrontmatter(md);
+          loaded.push({ ...fm.data });
         }
-        setItems(loaded)
+        setItems(loaded);
       })
-      .catch(()=>{})
-  },[])
+      .catch(() => {});
+  }, []);
 
   return (
     <main className="container">
-          
-      <div style={{display:"flex", gap:12, alignItems:"center", marginBottom:12}}>
-        <BackButton fallback="/" />
-        <h1 style={{margin:0}}>Projects</h1>
+      {/* Header */}
+      <div style={{ display: "flex", gap: 12, alignItems: "center", marginBottom: 16 }}>
+        <BackButton />
+        <h1 style={{ margin: 0 }}>Projects</h1>
       </div>
+
       <p className="sub">Selected projects and build experience.</p>
 
-       <section className="grid">
-        {items.length===0 ? (
-          <div className="card"><p className="sub">No projects loaded yet. Add items via Admin and update index.json.</p></div>
-        ) : items.map((p,i)=>(
-          <div className="card half" key={i}>
-            <h2>{p.title}</h2>
-            <p className="sub">{p.location} {p.date ? `• ${String(p.date).slice(0,10)}` : ''}</p>
-            {p.coverImage ? (
-              <img src={p.coverImage} alt={p.title} style={{width:'100%',borderRadius:12,border:'1px solid rgba(148,163,184,.15)'}} />
-            ) : null}
-            <p className="sub" style={{marginTop:10}}>{p.summary}</p>
+      {/* Reveal animation */}
+      <section className="grid reveal">
+        {items.length === 0 ? (
+          <div className="card">
+            <p className="sub" style={{ margin: 0 }}>
+              No projects loaded yet. Add items via Admin and update index.json.
+            </p>
           </div>
-        ))}
+        ) : (
+          items.map((p, i) => (
+            <div className="card half" key={i}>
+              <h2 style={{ marginTop: 0 }}>{p.title}</h2>
+
+              <p className="sub" style={{ marginTop: 0 }}>
+                {p.location ? p.location : ""}
+                {p.date ? ` • ${String(p.date).slice(0, 10)}` : ""}
+              </p>
+
+              {p.coverImage ? (
+                <img
+                  src={p.coverImage}
+                  alt={p.title || "Project image"}
+                  style={{
+                    width: "100%",
+                    borderRadius: 14,
+                    border: "1px solid rgba(255,255,255,0.10)",
+                    marginTop: 10,
+                    marginBottom: 10,
+                    objectFit: "cover",
+                  }}
+                  loading="lazy"
+                />
+              ) : null}
+
+              {p.summary ? (
+                <p className="sub" style={{ marginTop: 0 }}>
+                  {p.summary}
+                </p>
+              ) : (
+                <p className="sub" style={{ marginTop: 0 }}>
+                  Add a short summary for this project in Admin to display it here.
+                </p>
+              )}
+            </div>
+          ))
+        )}
       </section>
     </main>
-  )
+  );
 }
