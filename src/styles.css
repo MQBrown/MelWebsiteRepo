@@ -73,5 +73,13 @@ body{
   box-shadow:
     0 30px 60px rgba(0,0,0,.6);
 }
+.hero-left{
+  max-width:520px;
+}
+.hero-right{
+  display:flex;
+  justify-content:center;
+  min-height:300px;   /* ✅ prevents collapse */
+}
 
 /* SPLIT LAYOUT */
