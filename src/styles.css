@@ -225,9 +225,12 @@ body{
   background: rgba(18,26,43,0.9);
   border-radius:16px;
   padding:20px;
-  gap:12px;   
-  display:flex;
   flex-direction:column;
+
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:20px;
+  align-items:stretch;   /* ✅ THIS FIXES HEIGHT MATCHING */
 
   min-height: 100%;   /* ✅ ensures equal height */
 }
