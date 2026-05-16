@@ -7,21 +7,22 @@ export default function Home({ settings }) {
   return (
     <main className="container">
       <section className="hero section hero-split">
-        
         {/* LEFT SIDE */}
         <div className="hero-left">
-          <h1 className="h1">
-            We Build Custom, Single Family &amp; Town Houses
-          </h1>
+          <h1 className="h1">We Build Custom, Single Family &amp; Town Houses</h1>
 
           <p className="sub">
-            Residential construction &amp; property development in Georgia.
-            Built with precision, inspected for quality, and delivered with integrity.
+            Residential construction &amp; property development in Georgia. Built with
+            precision, inspected for quality, and delivered with integrity.
           </p>
 
           <div className="hero-actions">
-            <Link className="btn" to="/plans">View Floor Plans</Link>
-            <Link className="btn secondary" to="/contact">Request a Call</Link>
+            <Link className="btn" to="/plans">
+              View Floor Plans
+            </Link>
+            <Link className="btn secondary" to="/contact">
+              Request a Call
+            </Link>
           </div>
         </div>
 
@@ -29,16 +30,15 @@ export default function Home({ settings }) {
         <div className="hero-right">
           <img
             src="/house.jpg"
-            alt="Custom home build"
             className="hero-image"
+            alt="Home build"
           />
 
-          {/* ✅ BIG CENTERED TEXT OVER IMAGE */}
+          {/* BIG CENTERED TEXT OVER IMAGE */}
           <div className="hero-overlay-text">
             Bring your plans — we’ll build your home.
           </div>
         </div>
-
       </section>
 
       {/* ===== LOWER SECTION ===== */}
@@ -47,7 +47,8 @@ export default function Home({ settings }) {
           <h2 style={{ marginTop: 0 }}>Contact</h2>
 
           <p className="sub" style={{ margin: 0 }}>
-            Phone: <strong>{s.phone || "(770) 899-7775"}</strong><br />
+            Phone: <strong>{s.phone || "(770) 899-7775"}</strong>
+            <br />
             Email: <strong>{s.email || "mqbrown07@gmail.com"}</strong>
           </p>
 
