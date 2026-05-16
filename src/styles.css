@@ -235,6 +235,61 @@ body{
   min-height: 100%;   /* ✅ ensures equal height */
 }
 
+/* ===== CONTACT PAGE ===== */
+.contact-layout{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:40px;
+}
+
+/* side-by-side on desktop */
+@media(min-width:900px){
+  .contact-layout{
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* LEFT SIDE */
+.contact-left{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+/* RIGHT SIDE */
+.contact-right{
+  padding-left:10px;
+}
+
+.contact-right ul{
+  margin:10px 0;
+  padding-left:18px;
+  color:var(--muted);
+}
+
+.contact-layout{
+  backdrop-filter: blur(10px);
+  background: rgba(20,30,50,0.55);
+  border-radius:20px;
+  padding:30px;
+}
+
+.contact-right li{
+  margin-bottom:8px;
+}
+
+/* INPUTS */
+.input{
+  padding:10px 12px;
+  border-radius:12px;
+  border:1px solid rgba(148,163,184,.25);
+  background:#0b1220;
+  color:#fff;
+  width:100%;
+}
+
+
+
 /* ✅ FIXES BUTTON OVERLAP */
 .card .btn{
   margin-top:auto;
