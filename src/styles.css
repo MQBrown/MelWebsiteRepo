@@ -7,7 +7,9 @@
   --brand2:#60a5fa;
 }
 
-*{ box-sizing:border-box; }
+* {
+  box-sizing:border-box;
+}
 
 body{
   margin:0;
@@ -45,6 +47,7 @@ body{
   border-bottom:1px solid rgba(255,255,255,.08);
 }
 
+/* LEFT MENU */
 .links{
   display:flex;
   gap:24px;
@@ -101,14 +104,13 @@ body{
   backdrop-filter: blur(10px);
   background: rgba(20,30,50,0.55);
 
-  box-shadow: 0 30px 70px rgba(0,0,0,.6);
+  box-shadow:0 30px 70px rgba(0,0,0,.6);
 }
 
 .hero-split{
   display:grid;
   grid-template-columns:1fr;
   gap:40px;
-  align-items:center;
 }
 
 @media (min-width:900px){
@@ -139,6 +141,7 @@ body{
   box-shadow:0 15px 35px rgba(0,0,0,.6);
 }
 
+/* BIG TEXT OVER IMAGE */
 .hero-overlay-text{
   position:absolute;
   top:50%;
@@ -222,8 +225,6 @@ body{
   display:grid;
   grid-template-columns:repeat(12,1fr);
   gap:20px;
-
-  align-items:stretch;   /* ✅ makes cards same height */
 }
 
 /* ===== CARDS ===== */
@@ -232,17 +233,17 @@ body{
   background: rgba(18,26,43,0.9);
   border-radius:16px;
   padding:20px;
-
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-
-  height:100%;   /* ✅ ensures equal height */
 }
 
-/* ✅ KEY FIX: buttons align perfectly */
+/* HALF WIDTH */
+@media (min-width:900px){
+  .card.half{
+    grid-column:span 6;
+  }
+}
+
+/* ✅ CLEAN BUTTON SPACING (no alignment tricks) */
 .card .btn{
-  margin-top:auto;
-  align-self:flex-start;
+  margin-top:12px;
+  display:inline-block;
 }
-
