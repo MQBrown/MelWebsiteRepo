@@ -5,28 +5,21 @@ export default function Home({ settings }){
   const s = settings || {}
   return (
     <main className="container">
-      <section className="hero section hero-split">
-        {/* LEFT SIDE */}
-        <div className="hero-left">
-          <span className="badge">
-            Georgia Residential Contractor – Pending
-          </span>
+      <section className="hero section">
+        {/* Removed the badge line completely */}
       
-          <h1 className="h1">
-            Built Right. Permitted. Inspected.
-          </h1>
+        <h1 className="h1">We Build Custom, Single Family &amp; Town Houses</h1>
       
-          <p className="sub">
-            Residential construction & property development in Georgia. 
-            We focus on quality workmanship, clear communication, and code compliance.
-          </p>
+        <p className="sub">
+          Residential construction &amp; property development in Georgia. Built with precision, inspected for quality,
+          and delivered with integrity.
+        </p>
       
-          <div className="hero-actions">
-            <a className="btn" href="/plans">View Floor Plans</a>
-            <a className="btn secondary" href="/contact">Request a call back</a>
-          </div>
+        <div className="hero-actions hero-actions-center">
+          <Link className="btn" to="/plans">View Floor Plans</Link>
+          <Link className="btn secondary" to="/contact">Request a Call</Link>
         </div>
-      
+      </section>      
         {/* RIGHT SIDE (YOUR IMAGE) */}
         <div className="hero-right">
           <img 
