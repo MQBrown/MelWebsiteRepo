@@ -7,75 +7,73 @@
   --brand2:#60a5fa;
 }
 
-*{
-  box-sizing:border-box;
-}
-
-html, body{
-  height:100%;
-}
+*{ box-sizing:border-box; }
 
 body{
   margin:0;
   font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
   color:var(--text);
 
-  /* FULL BACKGROUND IMAGE */
   background:
     linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.85)),
     url('/house.jpg') center/cover no-repeat fixed;
 }
 
-
-/* ===== PAGE WRAPPER (THIS CREATES 5% BORDER LOOK) ===== */
+/* ===== WRAPPER (5% BORDER LOOK) ===== */
 .container{
-  max-width:1200px;
-  margin:60px auto;
-  padding:40px 24px;
+  max-width:1100px;
+  margin:0 auto;
+  padding:0 24px;
 }
 
-
-/* ===== FIXED HEADER ===== */
+/* ===== HEADER (INSIDE FRAME, TALLER, FIXED) ===== */
 .nav{
   position:fixed;
-  top:0;
-  left:0;
-  width:100%;
+  top:20px;
+  left:50%;
+  transform:translateX(-50%);
+  width:1100px;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+
+  padding:24px 30px;   /* ✅ taller header */
+
+  border-radius:18px;
+
+  backdrop-filter: blur(14px);
+  background: rgba(11,18,32,0.75);
+
   z-index:1000;
 
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-
-  padding:18px 40px;
-
-  backdrop-filter: blur(12px);
-  background: rgba(11,18,32,0.7);
-
-  border-bottom:1px solid rgba(255,255,255,.08);
+  box-shadow: 0 10px 30px rgba(0,0,0,.5);
 }
 
-/* LEFT LINKS */
+/* LEFT MENU */
 .links{
   display:flex;
-  gap:18px;
+  gap:24px;
 }
 
 .links a{
   color:#e5e7eb;
-  padding:8px 10px;
-  border-radius:10px;
+  text-decoration:none;   /* ✅ remove hyperlink look */
+  font-weight:500;
 }
 
 .links a:hover{
-  background: rgba(245,158,11,.12);
+  color:var(--brand);
 }
 
-/* RIGHT BRAND */
-.brand-right{
-  margin-left:auto;
+/* RIGHT BRAND STACK */
+.brand-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
 }
 
+/* MAIN BRAND */
 .brand-right a{
   font-size:24px;
   font-weight:900;
@@ -83,12 +81,25 @@ body{
   background: linear-gradient(90deg, #f59e0b, #60a5fa);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
+  text-decoration:none;
 }
 
+/* ADMIN LINK */
+.admin-link{
+  font-size:14px;
+  margin-top:4px;
+  color:var(--muted);
+  text-decoration:none;
+}
 
-/* ===== HERO (FLOATING CARD STYLE) ===== */
+.admin-link:hover{
+  color:var(--brand2);
+}
+
+/* ===== HERO ===== */
 .hero{
-  margin:120px auto 40px auto;   /* pushes below fixed nav */
+  margin:120px auto 40px;   /* below header */
   max-width:1100px;
 
   border-radius:22px;
@@ -98,8 +109,7 @@ body{
   background: rgba(20,30,50,0.55);
 
   box-shadow:
-    0 30px 70px rgba(0,0,0,.6),
-    0 0 40px rgba(96,165,250,.15);
+    0 30px 70px rgba(0,0,0,.6);
 }
 
 /* SPLIT LAYOUT */
@@ -107,7 +117,6 @@ body{
   display:grid;
   grid-template-columns: 1fr;
   gap:40px;
-  align-items:center;
 }
 
 @media(min-width:900px){
@@ -127,6 +136,7 @@ body{
 .hero-right{
   display:flex;
   justify-content:center;
+  position:relative;
 }
 
 .hero-image{
@@ -136,11 +146,27 @@ body{
 
   border:1px solid rgba(255,255,255,.08);
 
-  box-shadow:
-    0 15px 35px rgba(0,0,0,.6);
+  box-shadow:0 15px 35px rgba(0,0,0,.6);
 }
 
-/* ===== TEXT ===== */
+/* IMAGE TEXT OVERLAY (TOP RIGHT) */
+.hero-right::after{
+  content:"If you have a plan, bring it — we’ll build your home.";
+  position:absolute;
+  top:12px;
+  right:12px;
+
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(6px);
+
+  padding:8px 12px;
+  border-radius:10px;
+
+  font-size:13px;
+  max-width:220px;
+}
+
+/* TEXT */
 .h1{
   font-size:46px;
   font-weight:900;
@@ -157,8 +183,7 @@ body{
   max-width:520px;
 }
 
-
-/* ===== BUTTONS ===== */
+/* BUTTONS */
 .hero-actions{
   display:flex;
   gap:12px;
@@ -175,18 +200,13 @@ body{
   cursor:pointer;
 }
 
-.btn:hover{
-  opacity:0.9;
-}
-
 .btn.secondary{
   background: rgba(96,165,250,.12);
   color:#fff;
   border:1px solid rgba(96,165,250,.35);
 }
 
-
-/* ===== SECTIONS ===== */
+/* SECTIONS */
 .section{
   margin-top:40px;
 
@@ -197,11 +217,10 @@ body{
   padding:24px;
 }
 
-
-/* ===== GRID / CARDS ===== */
+/* CARDS */
 .grid{
   display:grid;
-  grid-template-columns: repeat(12,1fr);
+  grid-template-columns:repeat(12,1fr);
   gap:16px;
 }
 
