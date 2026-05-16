@@ -48,9 +48,7 @@ export default function Projects(){
       </div>
       <p className="sub">Selected projects and build experience.</p>
 
-      <h1>Projects</h1>
-      <p className="sub">Selected projects and build experience.</p>
-      <section className="grid">
+       <section className="grid">
         {items.length===0 ? (
           <div className="card"><p className="sub">No projects loaded yet. Add items via Admin and update index.json.</p></div>
         ) : items.map((p,i)=>(
