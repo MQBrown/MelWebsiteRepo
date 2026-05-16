@@ -13,16 +13,19 @@ export default function App() {
       {/* ===== NAVBAR ===== */}
       <nav className="nav">
 
-        {/* LEFT SIDE LINKS */}
+        {/* LEFT MENU */}
         <div className="links">
           <Link to="/plans">Floor Plans</Link>
           <Link to="/projects">Projects</Link>
           <Link to="/contact">Contact</Link>
         </div>
 
-        {/* RIGHT SIDE BRAND */}
-        <div className="brand brand-right">
-          <Link to="/">MQBrown Property LLC</Link>
+        {/* RIGHT SIDE (BRAND + ADMIN) */}
+        <div className="brand-wrapper">
+          <div className="brand-right">
+            <Link to="/">MQBrown Property LLC</Link>
+          </div>
+          <Link className="admin-link" to="/admin">Admin</Link>
         </div>
 
       </nav>
@@ -43,4 +46,3 @@ export default function App() {
     </div>
   );
 }
-``
