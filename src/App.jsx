@@ -15,26 +15,27 @@ export default function App(){
     fetch('/content/settings.json').then(r=>r.json()).then(setSettings).catch(()=>{})
   },[])
 
-  const title = useMemo(()=> settings?.businessName ?? 'MQbrown Property LLC', [settings])
+  const title = useMemo(()=> settings?.businessName ?? 'MQBrown Property LLC', [settings])
 
   return (
-    <>
-      <header className="nav">
+       <header className="nav">
         <div className="brand"><Link to="/">{title}</Link></div>
-        <nav className="links">
-          <Link to="/plans">Floor Plans</Link>
-          <Link to="/projects">Projects</Link>
-          <Link to="/contact">Contact</Link>
-          <a href="/admin/">Admin</a>
-        </nav>
         
-        <main className="container">
-          <div style={{display:"flex", gap:12, alignItems:"center", marginBottom:12}}>
-            <BackButton fallback="/" />
-            <h1 style={{margin:0}}>Floor Plans</h1>
+        <nav className="nav">
+        
+          {/* LEFT SIDE LINKS */}
+          <div className="links">
+            <Link to="/plans">Floor Plans</Link>
+            <Link to="/projects">Projects</Link>
+            <Link to="/contact">Contact</Link>
           </div>
-        </main>
         
+          {/* RIGHT SIDE BRAND */}
+          <div className="brand brand-right">
+            <Link to="/">MQBrown Property LLC</Link>
+          </div>
+        </nav>
+         
       </header>
       <Routes location={location}>
         <Route path="/" element={<Home settings={settings} />} />
