@@ -42,7 +42,7 @@ export default function Home({ settings }) {
       </section>
 
       {/* ===== LOWER SECTION ===== */}
-      <section className="section grid">
+      <section className="section grid equalize">
 
         <div className="card half">
           <h2 style={{ marginTop: 0 }}>Contact</h2>
