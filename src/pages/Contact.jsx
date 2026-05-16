@@ -41,7 +41,7 @@ export default function Contact({ settings }) {
         <strong>{s.email || "mqbrown07@gmail.com"}</strong>
       </p>
 
-      <section className="section contact-layout">
+      <section className="section contact-layout reveal">
         {/* LEFT: FORM */}
         <div className="contact-left">
           <h2 style={{ marginTop: 0 }}>Send a message</h2>
