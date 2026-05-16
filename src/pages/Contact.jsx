@@ -31,14 +31,13 @@ export default function Contact({ settings }){
 
   return (
     <main className="container">
-       <div style={{display:"flex", gap:12, alignItems:"center", marginBottom:12}}>
-          <BackButton fallback="/" />
-          <h1 style={{margin:0}}>Floor Plans</h1>
-        </div>
-      
-      <h1>Contact</h1>
-      <p className="sub">Phone: <strong>{s.phone || '(###) ###-####'}</strong> • Email: <strong>{s.email || 'info@mqbrownproperty.com'}</strong></p>
 
+      <div style={{display:"flex", gap:12, alignItems:"center", marginBottom:12}}>
+        <BackButton fallback="/" />
+        <h1 style={{margin:0}}>Contact</h1>
+      </div>
+      <p className="sub">Phone: <strong>{s.phone}</strong> • Email: <strong>{s.email}</strong></p>
+      
       <section className="grid">
         <div className="card half">
           <h2>Send a message</h2>
