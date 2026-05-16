@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useLocation } from "react-router-dom";
 
 import Home from "./pages/Home";
 import Plans from "./pages/Plans";
@@ -7,10 +7,16 @@ import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 
 export default function App() {
-  // Subtle fade-in on scroll for elements with className="reveal"
+  const location = useLocation();
+
   useEffect(() => {
-    const els = document.querySelectorAll(".reveal");
+    const els = Array.from(document.querySelectorAll(".reveal"));
+
+    // If there are no reveal elements on this route, nothing to do.
     if (!els.length) return;
+
+    // Reset state when route changes so elements can animate in again.
+    els.forEach((el) => el.classList.remove("is-visible"));
 
     const obs = new IntersectionObserver(
       (entries) => {
@@ -22,8 +28,19 @@ export default function App() {
     );
 
     els.forEach((el) => obs.observe(el));
+
+    // Safety: if an element is already in view immediately after navigation,
+    // ensure it becomes visible on the next frame.
+    requestAnimationFrame(() => {
+      els.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        const inView = rect.top < window.innerHeight && rect.bottom > 0;
+        if (inView) el.classList.add("is-visible");
+      });
+    });
+
     return () => obs.disconnect();
-  }, []);
+  }, [location.pathname]); // <-- key fix: rerun on route change [1](https://reactrouter.com/docs/en/v6/hooks/use-location)
 
   return (
     <div>
@@ -42,7 +59,7 @@ export default function App() {
             <Link to="/">MQBrown Property LLC</Link>
           </div>
 
-          {/* Admin is served by /public/admin/ (Decap CMS) */}
+          {/* Admin is served by /public/admin/ */}
           <a className="admin-link" href="/admin/">
             Admin
           </a>
