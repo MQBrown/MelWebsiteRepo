@@ -1,11 +1,14 @@
-
 import React from "react";
+import BackButton from "../components/BackButton";
 
 export default function Contact({ settings }) {
-  const s = settings || {};
-
   return (
     <main className="container">
+
+      {/* ✅ HOME BUTTON */}
+      <div style={{ marginBottom: 16 }}>
+        <BackButton />
+      </div>
 
       <section className="hero section contact-layout">
 
@@ -43,7 +46,6 @@ export default function Contact({ settings }) {
         </div>
 
       </section>
-
     </main>
   );
 }
