@@ -10,7 +10,20 @@
     grid-template-columns: 1.1fr 1fr;
   }
 }
+.hero-actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
 
+.hero{
+  text-align:center;
+}
+
+.hero-actions-center{
+  justify-content:center;
+}
 .hero-image{
   border:1px solid rgba(255,255,255,.08);
   box-shadow:
