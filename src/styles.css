@@ -124,19 +124,41 @@ body{
   gap:14px;
 }
 
-.hero-right{
-  position:relative;   /* ✅ THIS IS THE FIX */
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-
 .hero-image{
   width:100%;
   max-width:420px;
   border-radius:var(--radius-lg);
   box-shadow:0 12px 25px rgba(0,0,0,.6);
 }
+
+.hero-right{
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* ✅ THIS IS THE MISSING PIECE */
+.hero-overlay-text{
+  position:absolute;
+
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+
+  text-align:center;
+
+  font-size:22px;        /* tighter like screenshot */
+  font-weight:800;
+  line-height:1.2;
+
+  max-width:260px;
+  color:#fff;
+
+  text-shadow:0 6px 20px rgba(0,0,0,0.85);
+}
+
+
 
 /* HERO TEXT (BALANCED) */
 .h1{
