@@ -1,3 +1,46 @@
+.hero-split{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:40px;
+  align-items:center;
+}
+
+@media(min-width:900px){
+  .hero-split{
+    grid-template-columns: 1.1fr 1fr;
+  }
+}
+
+.hero-left{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+.hero-actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
+
+/* RIGHT SIDE IMAGE */
+
+.hero-right{
+  display:flex;
+  justify-content:center;
+}
+
+.hero-image{
+  width:100%;
+  max-width:500px;
+  border-radius:18px;
+  object-fit:cover;
+
+  box-shadow:
+    0 20px 40px rgba(0,0,0,.5);
+}
+
 :root{
   --bg:#0b1220;
   --surface:#0f1b2d;
