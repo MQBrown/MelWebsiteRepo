@@ -124,6 +124,13 @@ body{
   gap:14px;
 }
 
+.hero-right{
+  position:relative;   /* ✅ THIS IS THE FIX */
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
 .hero-image{
   width:100%;
   max-width:420px;
@@ -249,4 +256,8 @@ body{
 
 .reveal.is-visible{
   animation:fadeUp .5s ease both;
+}
+
+.hero-overlay-text{
+  top:45%;
 }
