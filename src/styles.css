@@ -294,3 +294,65 @@ body{
 /* visible by default so pages never "disappear" */
 .reveal{ opacity:1; transform:translateY(0); }
 .reveal.is-visible{ animation:fadeUp .5s ease both; }
+
+/* ==== Responsive ====   */
+@media(max-width: 768px){
+
+  .hero-split{
+    grid-template-columns:1fr;   /* ✅ stack vertically */
+  }
+
+  .hero{
+    padding:20px;   /* reduce padding */
+  }
+
+  .hero-right{
+    margin-top:20px;
+  }
+
+}
+
+@media(max-width:768px){
+
+  .hero-image{
+    max-width:100%;   /* full width on mobile */
+  }
+
+  .hero-overlay-text{
+    font-size:18px;
+    max-width:200px;
+  }
+
+}
+
+@media(max-width:768px){
+
+  .h1{
+    font-size:26px;   /* smaller headline */
+  }
+
+  .sub{
+    font-size:14px;
+  }
+
+}
+@media(max-width:768px){
+
+  .hero-actions{
+    flex-direction:column;   /* stack buttons */
+  }
+
+  .hero-actions .btn{
+    width:100%;
+  }
+
+}
+
+@media(max-width:768px){
+
+  .card.half{
+    grid-column:span 12;  /* full width */
+  }
+
+}
+
