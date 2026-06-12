@@ -1,29 +1,48 @@
 import React, { useState } from "react";
-import BackButton from "../components/BackButton";
+import { useNavigate } from "react-router-dom";
 
 export default function Contact({ settings }) {
+  const navigate = useNavigate();
   const s = settings || {};
-  const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
+
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: ""
+  });
+
   const [status, setStatus] = useState(null);
   const [busy, setBusy] = useState(false);
 
-  const onChange = (e) => setForm((p) => ({ ...p, [e.target.name]: e.target.value }));
+  const onChange = (e) =>
+    setForm((p) => ({ ...p, [e.target.name]: e.target.value }));
+
+  const clearForm = () =>
+    setForm({ name: "", email: "", phone: "", message: "" });
+
+  const cancel = () => navigate("/");
 
   const submit = async (e) => {
     e.preventDefault();
     setBusy(true);
     setStatus(null);
+
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify(form)
       });
+
       if (!res.ok) throw new Error("Request failed");
+
       setStatus("Thanks! We received your message and will follow up.");
-      setForm({ name: "", email: "", phone: "", message: "" });
+      clearForm();
     } catch {
-      setStatus("Sorry — something went wrong. Please email or call us directly.");
+      setStatus(
+        "Sorry — something went wrong. Please email or call us directly."
+      );
     } finally {
       setBusy(false);
     }
@@ -31,11 +50,10 @@ export default function Contact({ settings }) {
 
   return (
     <main className="container">
-      <div style={{ marginBottom: 16 }}>
-        <BackButton /> {/* should say Home and navigate("/") */}
-      </div>
+      {/* Removed Home/Back button per your request */}
 
       <h1 style={{ marginTop: 0 }}>Contact</h1>
+
       <p className="sub">
         Phone: <strong>{s.phone || "(770) 899-7775"}</strong> &nbsp;•&nbsp; Email:{" "}
         <strong>{s.email || "mqbrown07@gmail.com"}</strong>
@@ -49,7 +67,13 @@ export default function Contact({ settings }) {
           <form onSubmit={submit} className="contact-form">
             <div>
               <label>Name</label>
-              <input className="input" name="name" value={form.name} onChange={onChange} required />
+              <input
+                className="input"
+                name="name"
+                value={form.name}
+                onChange={onChange}
+                required
+              />
             </div>
 
             <div>
@@ -66,7 +90,12 @@ export default function Contact({ settings }) {
 
             <div>
               <label>Phone (optional)</label>
-              <input className="input" name="phone" value={form.phone} onChange={onChange} />
+              <input
+                className="input"
+                name="phone"
+                value={form.phone}
+                onChange={onChange}
+              />
             </div>
 
             <div>
@@ -81,11 +110,34 @@ export default function Contact({ settings }) {
               />
             </div>
 
-            <button className="btn" disabled={busy}>
-              {busy ? "Sending…" : "Submit"}
-            </button>
+            {/* BUTTON ROW */}
+            <div style={{ display: "flex", gap: 12, marginTop: 12 }}>
+              <button className="btn" disabled={busy}>
+                {busy ? "Sending…" : "Submit"}
+              </button>
 
-            {status ? <p className="sub" style={{ marginTop: 12 }}>{status}</p> : null}
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={clearForm}
+              >
+                Clear
+              </button>
+
+              <button
+                type="button"
+                className="btn btn-danger"
+                onClick={cancel}
+              >
+                Cancel
+              </button>
+            </div>
+
+            {status ? (
+              <p className="sub" style={{ marginTop: 12 }}>
+                {status}
+              </p>
+            ) : null}
           </form>
         </div>
 
@@ -98,7 +150,9 @@ export default function Contact({ settings }) {
             <li>Target timeline</li>
             <li>Any plans or inspiration links</li>
           </ul>
-          <p className="sub">We'll respond with next steps and a quick call if needed.</p>
+          <p className="sub">
+            We'll respond with next steps and a quick call if needed.
+          </p>
         </div>
       </section>
     </main>
